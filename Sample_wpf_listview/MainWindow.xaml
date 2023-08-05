@@ -7,42 +7,61 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="936" Loaded="wndMain_Loaded">
     <Grid>
-        <ListView x:Name="lvItemList" HorizontalAlignment="Center" Height="231" VerticalAlignment="Top" Margin="0,122,0,0" Width="836">
-            <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type local:Item }">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="50"/>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="100"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="100"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding date}"    FontSize="16"/>
-                        <TextBlock Grid.Column="1" Text="{Binding telop}"   FontSize="16"/>
-                        <TextBlock Grid.Column="2" Text="{Binding tempMin}" FontSize="16"/>
-                        <TextBlock Grid.Column="3" Text="{Binding tempMax}" FontSize="16"/>
-                        <TextBlock Grid.Column="4" Text="{Binding rain06}"  FontSize="16"/>
-                        <TextBlock Grid.Column="5" Text="{Binding rain12}"  FontSize="16"/>
-                        <TextBlock Grid.Column="6" Text="{Binding rain18}"  FontSize="16"/>
-                        <TextBlock Grid.Column="7" Text="{Binding rain24}"  FontSize="16"/>
-                        <Image     Grid.Column="8" Source="{Binding image}"/>
-                        <Image     Grid.Column="9" Source="https://www.jma.go.jp/bosai/forecast/img/101.png"/>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+        <Grid Margin="50,20,50,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="btnGetWeather" 
+                    Grid.Row="0"
+                    Content="Button" 
+                    HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    Height="60" Width="120" 
+                    Click="btnGetWeather_Click"/>
+            <TextBlock x:Name="txtLocation" 
+                       Grid.Row="1"
+                       HorizontalAlignment="Left" VerticalAlignment="Top"
+                       TextWrapping="Wrap" 
+                       Text="TextBlock" 
+                       FontSize="16"/>
+            <ListView x:Name="lvItemList" 
+                      Grid.Row="2"
+                      HorizontalAlignment="Center" VerticalAlignment="Top"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="{x:Type local:Item }">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding date}"    FontSize="16"/>
+                            <TextBlock Grid.Column="1" Text="{Binding telop}"   FontSize="16"/>
+                            <TextBlock Grid.Column="2" Text="{Binding tempMin}" FontSize="16"/>
+                            <TextBlock Grid.Column="3" Text="{Binding tempMax}" FontSize="16"/>
+                            <TextBlock Grid.Column="4" Text="{Binding rain06}"  FontSize="16"/>
+                            <TextBlock Grid.Column="5" Text="{Binding rain12}"  FontSize="16"/>
+                            <TextBlock Grid.Column="6" Text="{Binding rain18}"  FontSize="16"/>
+                            <TextBlock Grid.Column="7" Text="{Binding rain24}"  FontSize="16"/>
+                            <Image     Grid.Column="8" Source="{Binding image}"/>
+                            <Image     Grid.Column="9" Source="https://www.jma.go.jp/bosai/forecast/img/101.png"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
 
-        </ListView>
-        <Button x:Name="btnGetWeather" Content="Button" HorizontalAlignment="Left" Margin="35,19,0,0" VerticalAlignment="Top" Height="61" Width="122" Click="btnGetWeather_Click"/>
-        <TextBlock x:Name="txtLocation" HorizontalAlignment="Left" Height="37" Margin="35,85,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="271" FontSize="16"/>
-
+            </ListView>
+        </Grid>
     </Grid>
 </Window>
